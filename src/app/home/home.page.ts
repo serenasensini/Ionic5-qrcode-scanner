@@ -8,14 +8,15 @@ import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 })
 export class HomePage {
 
-  constructor(private barcodeScanner: BarcodeScanner) { }
+  codice: any;
 
+  constructor(private barcodeScanner: BarcodeScanner) { }
 
   leggi(){
     this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
+      this.codice = barcodeData;
     }).catch(err => {
-      console.log('Error', err);
+      console.log('Errore durante il recupero delle informazioni', err);
     });
   }
 }
